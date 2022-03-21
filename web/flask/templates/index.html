@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block body %}
+	<style>
+      body {
+      background-color: #336666;
+      }
+   </style>
+	<div class="container" id="topdiv6">
+		<nav class="navbar navbar-light bg-warning">
+			<span class="navbar-brand mb-0 h1">E-Team coders - Web app - Class 2022</span>
+			<a class="my-2 my-sm-0" href="{{url_for('signup')}}"><b>Are you Selling?</b></a>
+		</nav>
+		{% if rows %}
+		<div class="row" id="index0">
+		{% for row in rows %}
+		<div class="card needspace mb-3" style="width: 16rem;">
+			<img src="{{ url_for('static_dir', path = 'images/'+row.filename) }}" class="card-img-top" alt="...">
+			<div class="card-body">
+				<h5 class="card-title">{{row.name}}</h5>
+				<p class="card-text">{{row.category}}</p>
+				<p class="card-text">{{row.description}}</p>
+				<p class="card-text text-danger"><b>Price Range: {{row.price_range}}</b></p>
+				<p class="card-text">{{row.comments}}</p>
+			</div>
+	</div>
+		{% endfor %}
+				</div>
+			{% endif %}
+	</div>
+{% endblock %}
